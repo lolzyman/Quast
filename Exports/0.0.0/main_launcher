@@ -1,0 +1,4 @@
+gnome-terminal -e 'godot --main-pack Launcher.pck'
+gnome-terminal -e 'godot --main-pack Launcher.pck'
+gnome-terminal -e 'godot --main-pack Launcher.pck'
+

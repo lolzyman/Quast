@@ -1,0 +1,51 @@
+Generic Things that the Enemy does
+The Enemy code will be the same format that will be used for the bots.
+This means that if the enemy wants to, it can taunt, guide or mislead players throughout the map
+
+
+Basic Controls
+Move
+Get list of local players
+Look At Player
+Look in Direction of Movement
+Analyize Player
+    Distance To
+    Player Class
+        What style of weapon they are weilding
+            Ranged, Melee, Staff
+            Blunt, Cutting, Stabbing, Elemental
+    Player Health Percentage
+Modify Internal Variables
+Attack in Look Direction
+    Throw Projectile
+    Swing Melee Weapon
+    
+
+Advanced Controls
+    remove from self specified groups
+    add to unused groups
+    Send Local Chat Message
+    Access Global Variables
+    Send Message To another Enemy
+    Interact With Objects
+        Trigger Doors
+        Trigger Traps
+        Pick Up Items
+    Change Equipment
+    Cast Spells
+    
+Functions:
+    update() -> void
+    get_local_players() -> array
+    get_all_players() -> array
+    set_target_player(player) -> void
+    look_at_target_player() -> void
+    look_in_motion_direction() -> void
+    set_move_in_look_direction() -> void
+    is_target_player_visible() -> bool
+Variables:
+    move_vector : Vector2
+    attack_cooldown
+    current_attack_cooldown
+    move_in_look_direction : bool
+    

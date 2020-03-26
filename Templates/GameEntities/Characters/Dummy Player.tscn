@@ -1,0 +1,62 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/GameEntities/Characters/PlayerController.gd" type="Script" id=1]
+[ext_resource path="res://Templates/GameEntities/Projectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Images/light_shadow_light_blob.png" type="Texture" id=3]
+[ext_resource path="res://Beta_Images/Character/Character.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://Templates/Attack_Monitors/Ranged_Attacks/Generic_Ranged_Monitor.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Templates/GameEntities/Items/Slime_Ball.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Scripts/MISC Controllers/Melee_Monitor.gd" type="Script" id=8]
+[ext_resource path="res://Templates/UI/Health_Bar.tscn" type="PackedScene" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 64.0
+
+[node name="Admin_Player" type="KinematicBody2D"]
+collision_mask = 253
+script = ExtResource( 1 )
+projectile = ExtResource( 2 )
+SPEED = 150
+
+[node name="Body_Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+
+[node name="Light2D" type="Light2D" parent="."]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 3 )
+shadow_enabled = true
+
+[node name="Body" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 2, 2 )
+texture = ExtResource( 4 )
+
+[node name="Nose" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 32, 0 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 5 )
+
+[node name="Item_Interact_Area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item_Interact_Area"]
+shape = SubResource( 2 )
+
+[node name="Ranged_Monitor" parent="." instance=ExtResource( 6 )]
+projectile_types = [ null ]
+expected_projectile = ExtResource( 2 )
+current_requested_ammo = ExtResource( 7 )
+
+[node name="Melee_Monitor" type="Area2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="Health_Bar" parent="." instance=ExtResource( 9 )]

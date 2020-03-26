@@ -1,0 +1,21 @@
+This is an outline for how rooms can get set up and organized. 
+
+Each Room room has 3 different access ways to the adjoing rooms. For the Beta release, there will not be rooms of different size.
+
+Inital Beta:
+Rooms will have a 0/7 chance of being a dead end. 
+Rooms will have a 4/7 chance of having two interconnections
+Rooms will have a 2/7 chance of having three interconnections
+Rooms will have a 1/7 change of being a cross roads.
+
+These values can be played with to see what style of maps that they generate.
+Seeds will be saved as values on a stack. The stack will allow maps to be generated predicatably.
+
+During the initialization, older rooms take precedence and so rooms can be forced to have more or less connections than they want.
+Rooms will follow a breatht first generation. Elements will generate them selves.
+The will then check their surrondings to see if they need to modify their standing.
+They will then check which connections need rendering, and then push those connections onto the queue.
+
+
+Rooms can have three entryways on each side. If there isn't supposed to be a connection, then they just refuse any openings on their wall
+If they have at least one open entryway, each with a 33% chance.

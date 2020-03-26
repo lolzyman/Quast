@@ -1,0 +1,98 @@
+<html>
+    <Title>Fractal Visualization</Title>
+    <body>
+        <canvas id="myCanvas" height="400" width="400" style="border: 1px solid #454545 ;;"></canvas>
+    </body>
+    <script>
+        const maxIterations = 100;
+        const thresholdValue = 10;
+        const maxColorCodeValue = 16581375;
+        var canvas = document.getElementById("myCanvas");
+        var totalXLength = canvas.getAttribute("height");
+        var totalYLength = canvas.getAttribute("width");
+        var xMin = -0;
+        var xMax = 0.5;
+        var yMin = -0.25;
+        var yMax = 0.25;
+        var xResolution = (xMax - xMin)/totalXLength;
+        var yResolution = (yMax - yMin)/totalYLength;
+        var ctx = canvas.getContext("2d");
+        ctx.fillStyle = "green";
+        ctx.fillRect(10,10,10,10);
+        var oneOffDisplay = true;
+        for(var xIndex = 0; xIndex < totalXLength; xIndex++){
+            for(var yIndex = 0; yIndex < totalYLength; yIndex++){
+                if((xIndex + yIndex) % 2){
+                    ctx.fillStyle = "green"
+                }else{
+                    ctx.fillStyle = "red"
+                }
+                var converganceValue = checkConvergence([xResolution * xIndex + xMin, yResolution * yIndex + yMin])
+                if(converganceValue != false){
+                    //ctx.fillStyle = "#000002"
+                    ctx.fillStyle = converToColorCode(converganceValue)
+                    if(oneOffDisplay){
+                        oneOffDisplay = false;
+                        console.log(converganceValue);
+                        console.log(converToColorCode(converganceValue) ===  "#000002")
+                        //ctx.fillStyle = converToColorCode(converganceValue)
+                        console.log(ctx.fillStyle)
+                    }
+                    ctx.fillStyle = convertToColorCodeTwo(converganceValue)
+                    //ctx.fillStyle = "#000002"
+                    //ctx.fillStyle = convertToColorCodeTwo(converganceValue)
+                }else{
+                    ctx.fillStyle = "white"
+                }
+                ctx.fillRect(xIndex, yIndex, 1, 1);
+            }   
+        }
+        function checkConvergence(constant, initalValue = [0,0], iteratorValue = 0){
+            if(iteratorValue === maxIterations){
+                return determineComplexMagnitude(initalValue);
+            }else{
+                var nextValue = calculateNextValue(initalValue, constant);
+                if(determineComplexMagnitude(nextValue) > thresholdValue){
+                    return false
+                }else{
+                    return checkConvergence(constant, nextValue, iteratorValue + 1);
+                }
+            }
+        }
+        function calculateNextValue(value, constant){
+            return addComplex(multiplyComplex(value, value), constant)
+        }
+        function multiplyComplex(complex1, complex2){
+            var real = complex1[0] * complex2[0] - complex1[1] * complex2[1]
+            var complex = complex1[1] * complex2[0] + complex1[0] * complex2[1]
+            return [real, complex]
+        }
+        function addComplex(complex1, complex2){
+            return [complex1[0] + complex2[0],complex1[1] + complex2[1]]
+        }
+        function determineComplexMagnitude(complex){
+            return Math.sqrt(complex[0] * complex[0] + complex[1] * complex[1]);
+        }
+        converToColorCode(728)
+        var oneOff = true;
+        function converToColorCode(decimalNumber){
+            var numbericNumber = decimalNumber % maxColorCodeValue;
+            var endingString = numbericNumber.toString(16)
+            var preceedingString = "#";
+            for(var index = 0; index < (6 - endingString.length); index++){
+                preceedingString += "0"
+            }
+            var finalString = preceedingString + endingString;
+            if(oneOff){
+                oneOff = false
+            }
+            return finalString;
+        }
+        function convertToColorCodeTwo(decimalValue){
+            var colorCode1 = decimalValue % 256;
+            var colorCode2 = (colorCode1 * decimalValue) % 256
+            var colorCode3 = (colorCode2 * decimalValue) % 256
+            return 'rgb(' + colorCode1.toString() + ", " + colorCode2.toString() +", " + colorCode3.toString() + ")"
+        }
+    </script>
+</html>

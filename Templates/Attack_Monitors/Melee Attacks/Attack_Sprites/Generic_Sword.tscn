@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Beta_Images/Attack_Arch/Attack_Arch.png" type="Texture" id=1]
+
+[node name="Attack_Sprite" type="Sprite"]
+visible = false
+position = Vector2( 48, 0 )
+scale = Vector2( 2, 4 )
+texture = ExtResource( 1 )

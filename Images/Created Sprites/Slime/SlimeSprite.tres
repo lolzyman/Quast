@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=2]
+
+[ext_resource path="res://Images/Created Sprites/Slime1.svg" type="Texture" id=1]
+[ext_resource path="res://Images/Created Sprites/Slime2.svg" type="Texture" id=2]
+[ext_resource path="res://Images/Created Sprites/Slime3.svg" type="Texture" id=3]
+[ext_resource path="res://Images/Created Sprites/Slime4.svg" type="Texture" id=4]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Idling",
+"speed": 5.0
+} ]

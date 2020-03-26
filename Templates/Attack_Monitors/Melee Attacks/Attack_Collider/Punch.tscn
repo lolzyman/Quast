@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="Attack_Collider" type="CollisionPolygon2D"]
+position = Vector2( 0.157783, 0 )
+scale = Vector2( 0.923686, 0.819229 )
+polygon = PoolVector2Array( 29.0159, 54.2588, 36.0626, 64.6487, 53.9504, 53.6476, 59.371, 40.813, 53.6794, 24.9225, 33.8944, 40.813 )

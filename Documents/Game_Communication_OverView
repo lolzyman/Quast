@@ -1,0 +1,68 @@
+Here we are going to outline the communication between the Quast Server and the Quast Server
+
+
+Server outline
+    Startup and Initialization
+        The server will start by loading in the starter map.
+    
+    Map Initialization
+        The Generic Map will be loaded
+        Enemies loading
+            It will iterate over root/Enemies and load information about them into globals
+            These tokens will contain information about the enemy's type, health
+    
+    Client Connection
+
+    Client Completes Map
+
+Testing the system
+    For testing to server communication, the server will be launching in a graphics view.
+    Admin Debugging
+        The server launched in graphics mood will allow an admin to scroll across the map and view all the players at once.
+        There will be a graphic boundary so that the admin will know when they are
+    
+Things that I need todo for work tomorrow
+I need to look at Karl's Daugheterst Things
+I realluy should find a bucket for the air compressor
+I need to clean the actuator Bases and test a couple of the to make sure that they workI should review what are good bases and how to improve
+I need to look into how to improve the quaility of the LCD connector to the ACT PCB.
+I need to Order and email Potter's PCB
+I need to respec a power supply for the DCC It should have all the Compliancies that Pasco is looking for
+You should Call freedom finisher to see what they use for thier poweder coating
+    Talk about how you are looking into increasing the wuality of the paint so we can use a better product
+You need to update the BOM from the ACT
+You need to update the FP BOM from the ESD protection
+You need to order prototypes for the ESD
+You need to create a quote for saturn with the new force plate boards
+You need to go and continue converting the documents from solid works files to step and ides files.
+    Maybe you can put Curtis or Aaron on it so you don't have to worry about it.
+    It would give them practice on how to deal with drawins which would be benifical for their carriers. 
+    Either way you will have to orgainze the files into something that they can handle    
+You need to orgainze the office. 
+    It is a mess and those act power supplies need to go some where. 
+The office supplies can be thrown out and the old coffee maker really should go
+You need to contact the company that makse Violgens and talk to them about how to handle the chemical. 
+You need to start the act documentation process on how to program and test for shorts.
+Talk to Kelluy about getting new nine volt batteries for the Multimeter
+You need to drill a hole and epoxy the vaccum stopper
+You need to finish the templates for the holders. 
+    You might need to talk to kelly about if you need to get the wood still
+You should take the cans into ollie so that you can clean out the office some more.
+You need to sort through the components in the blue tub so that you can get rid of them.
+    They really don't need to be there any more
+You should write up a quite summary of the centripifal force sensor and why its discontinued.
+    The the parts either need to go tinto strogae or get thrown away. 
+The old dfs casings need to have something done to them
+    They either need to be reciled or thrown out. we really don't need to hold on to them any longer
+You should get some boxes from Orion to stro pcbfailed prototypes that are useless now
+You need to organize the PCB section of the engineering 
+
+Things that I think will take 5 minutes
+
+
+5-15 Minute Things
+
+
+30 Minute Things
+
+2 Hour Things

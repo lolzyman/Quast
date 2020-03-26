@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scripts/GameEntities/Items/Inventory Items/Generic_Sword.gd" type="Script" id=1]
+[ext_resource path="res://Templates/Attack_Monitors/Melee Attacks/Attack_Sprites/Generic_Sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Templates/Attack_Monitors/Melee Attacks/Attack_Collider/Full_Arc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Images/TileSets/Item_Set_Alpha.tres" type="TileSet" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Sword" type="Area2D"]
+scale = Vector2( 0.75, 0.75 )
+collision_layer = 256
+collision_mask = 256
+script = ExtResource( 1 )
+keywords = [ 4, 5 ]
+attack_sprite = ExtResource( 2 )
+attack_collider = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="TileMap" type="TileMap" parent="."]
+position = Vector2( 32, 32 )
+scale = Vector2( 4, 4 )
+tile_set = ExtResource( 4 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0 )
+
+[node name="Quantity" type="Label" parent="."]
+visible = false
+margin_top = 18.0
+margin_right = 31.0
+margin_bottom = 32.0
+grow_horizontal = 0
+text = "1"
+align = 2
+[connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_mouse_exited"]
