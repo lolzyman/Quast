@@ -1,16 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/GameEntities/Enemies/Slime_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Templates/GameEntities/Items/Sword.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Images/Created Sprites/Slime/SlimeSprite.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://Templates/UI/Health_Bar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Templates/GameEntities/Enemies/Skeleton_Ranged.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 259.294
 
-[node name="Slime" type="RigidBody2D" groups=[
-"Game_Entity",
-]]
+[node name="Slime" type="RigidBody2D"]
+mode = 3
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true
@@ -24,6 +24,9 @@ expected_loot_drop = [ {
 "Quantity": 1,
 "Stackable": false
 } ]
+smaller_slime = ExtResource( 5 )
+smaller_slime_probability = 50.0
+smaller_slime_quantity = 5.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2( 0, -10 )
@@ -33,7 +36,7 @@ polygon = PoolVector2Array( -3.2, 0, 0, -3.2, 3.2, 0, 3.2, 3.2, -3.2, 3.2 )
 [node name="Test Slime" type="AnimatedSprite" parent="."]
 frames = ExtResource( 3 )
 animation = "Idling"
-frame = 3
+frame = 2
 playing = true
 
 [node name="VisionRay" type="RayCast2D" parent="."]

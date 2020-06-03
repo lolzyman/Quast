@@ -12,13 +12,15 @@ var Projectile_Carrier;
 var Enemy_Carrier;
 var Item_Carrier;
 
-func set_size(new_size):
+func set_size(_new_size):
 	pass
 
 export (float) var max_health = 100
 var health
 
 #warning-ignore:unused_class_variable
+var managed_inventory:Managed_Inventory = Managed_Inventory.new();
+
 var inventory:Dictionary;
 var inventory_next_key = 0;
 var inventory_change_flag = false;
@@ -51,26 +53,31 @@ func _ready():
 	health = max_health;
 	intialize_equipment()
 	$Health_Bar.set_health(100);
+	
 func intialize_equipment():
 	for value in globals.equipment_keywords:
 		equipment[globals.equipment_keywords[value]] = null;
 	process_equipment()
+	
 func equip(equip_item:Node2D, equip_placeholder_keyword):
 	if(equipment[equip_placeholder_keyword] != null):
 		unequip(get_node(equipment[equip_placeholder_keyword]["UI_Item_Nodepath"]))
 	equipment[equip_placeholder_keyword] = equip_item.source_dictionary;
 	equipment_change_flag = true;
+	
 func recieve_damage(damage_value, damage_type):
 	#print("I was supposed to take ", damage_value, " ", damage_type, " damage");
 	health -= damage_value;
 	emit_signal("health_update", health * 100 / max_health)
 	pass
+
 func unequip(item:Node2D):
 	for key in equipment.keys():
 		if equipment[key] == item.source_dictionary:
 			equipment[key] = null
 			equipment_change_flag = true;
 			return
+
 func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = SPEED;
@@ -111,7 +118,10 @@ func _physics_process(_delta):
 	
 	if Input.is_action_just_pressed("engine_debug"):
 		print(Game_Constants.search_for_player())
-		
+	
+	if Input.is_action_just_pressed("engine_close"):
+		get_tree().quit();
+	
 	if inventory_change_flag:
 		process_inventory();
 		get_tree().get_current_scene().user_interface.update_from_inventory();
@@ -143,10 +153,12 @@ func process_equipment():
 	pass
 
 func process_inventory():
+	managed_inventory.update();
 	# Remove any empty Items
 	for item in inventory.keys():
 		if inventory[item]["Quantity"] <= 0:
-			get_tree().get_current_scene().user_interface.remove_from_ui(inventory[item])
+			if inventory[item] != null:
+				get_tree().get_current_scene().user_interface.remove_from_ui(inventory[item])
 			if is_item_equipped(inventory[item]):
 				unequip(get_node(inventory[item]["UI_Item_Nodepath"]));
 				equipment_change_flag = true;

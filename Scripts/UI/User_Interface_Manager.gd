@@ -1,6 +1,6 @@
 extends Control
 
-export (PackedScene) var item
+#export (PackedScene) var item
 var character_inventory
 var character_equipment
 var character
@@ -20,6 +20,7 @@ func _ready():
 	FPS_Timer.start(1);
 	process_parameter_list()
 	$CanvasLayer/Int_Changer.get_line_edit().connect("mouse_exited", self, "disable_focus")
+	get_tree().get_root().connect("size_changed", self, "screen_resize")
 	add_child(FPS_Timer)
 
 func _physics_process(_delta):
@@ -28,6 +29,7 @@ func _physics_process(_delta):
 
 func update_fps_display():
 	$CanvasLayer/FPS_Display.text = "FPS: " + str(Engine.get_frames_per_second());
+
 func add_item(item_dictionary:Dictionary):
 	var items = item_dictionary.keys();
 	for item in items:
@@ -36,6 +38,7 @@ func add_item(item_dictionary:Dictionary):
 			if placeholder.accept_item(newItem):
 				$CanvasLayer/Character_Inventory.add_child(newItem);
 				return
+
 func update_to_inventory(item, placeholder, change_code):
 	# change_types
 	# Item Combined
@@ -58,13 +61,16 @@ func update_to_inventory(item, placeholder, change_code):
 			pass
 	#print(item," ", change_code)
 	pass
+
 func remove_from_ui(item_information:Dictionary):
-	var UI_Item = get_node(item_information["UI_Item_Nodepath"]);
-	var UI_Item_Placeholder = get_node(item_information["UI_Placeholder_Nodepath"]);
-	UI_Item.queue_free();
-	UI_Item_Placeholder.occupied = false;
-	UI_Item_Placeholder.owned_item = null;
-	pass
+	print(item_information)
+	if item_information["UI_Item_Nodepath"] != null:
+		var UI_Item = get_node(item_information["UI_Item_Nodepath"]);
+		UI_Item.queue_free();
+	if item_information["UI_Placeholder_Nodepath"]:
+		var UI_Item_Placeholder = get_node(item_information["UI_Placeholder_Nodepath"]);
+		UI_Item_Placeholder.occupied = false;
+		UI_Item_Placeholder.owned_item = null;
 func place_item(item):
 	var item_node = get_node(item["UI_Item_Nodepath"]);
 	for placeholder in $CanvasLayer/Inventory_Placeholders.get_children():
@@ -200,3 +206,5 @@ func disable_focus():
 func _on_Scene_Reset_pressed():
 	get_tree().reload_current_scene()
 
+func screen_resize():
+	print("Screen Size changing")

@@ -69,6 +69,7 @@
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Pressure_Plate.tscn" type="PackedScene" id=67]
 
 [node name="World" type="Node"]
+pause_mode = 2
 script = ExtResource( 1 )
 admin_camera = ExtResource( 2 )
 default_player = ExtResource( 3 )
@@ -78,7 +79,7 @@ loot_bag = ExtResource( 5 )
 current_player = NodePath("Players/Main Player")
 
 [node name="Rooms" type="Node2D" parent="."]
-editor/display_folded = true
+pause_mode = 1
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true
@@ -327,14 +328,18 @@ position = Vector2( 704, 4224 )
 position = Vector2( 3520, 0 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+pause_mode = 1
 visible = false
 color = Color( 0, 0, 0, 1 )
 
 [node name="Items" type="Node" parent="."]
+pause_mode = 1
 
 [node name="Projectiles" type="Node" parent="."]
+pause_mode = 1
 
 [node name="Players" type="Node" parent="."]
+pause_mode = 1
 
 [node name="Main Player" parent="Players" instance=ExtResource( 3 )]
 position = Vector2( 2822.18, 388.542 )
@@ -345,6 +350,7 @@ default_attack_sprite = ExtResource( 59 )
 default_attack_collider = ExtResource( 60 )
 
 [node name="Enemies" type="Node2D" parent="."]
+pause_mode = 1
 
 [node name="Slime" parent="Enemies" instance=ExtResource( 61 )]
 position = Vector2( 2624, -75.3707 )
@@ -360,16 +366,15 @@ position = Vector2( 2976, -192 )
 Projectile_Carrier_Path = NodePath("../../Projectiles")
 expected_loot_drop = [ {
 "Item": ExtResource( 64 ),
-"Probability": 50.0,
+"Probability": 100.0,
 "Quantity": 1,
 "Stackable": false
 } ]
 
 [node name="Door_Sets" type="Node" parent="."]
-editor/display_folded = true
+pause_mode = 1
 
 [node name="Set 1" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 1" instance=ExtResource( 66 )]
 position = Vector2( 4224, -64 )
@@ -381,7 +386,6 @@ position = Vector2( 4160, 64 )
 position = Vector2( 4096, -256 )
 
 [node name="Set 2" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Pressure_Plate" parent="Door_Sets/Set 2" instance=ExtResource( 67 )]
 position = Vector2( 4288, 64 )
@@ -393,7 +397,6 @@ position = Vector2( 4352, -256 )
 position = Vector2( 4224, 0 )
 
 [node name="Set 3" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 3" instance=ExtResource( 66 )]
 position = Vector2( 448, 1536 )
@@ -405,7 +408,6 @@ position = Vector2( 576, 1152 )
 position = Vector2( 448, 1600 )
 
 [node name="Set 4" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 4" instance=ExtResource( 66 )]
 position = Vector2( 704, 2880 )
@@ -417,7 +419,6 @@ position = Vector2( 832, 3072 )
 position = Vector2( 768, 2752 )
 
 [node name="Set 5" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 5" instance=ExtResource( 66 )]
 position = Vector2( 704, 2816 )
@@ -429,7 +430,6 @@ position = Vector2( 576, 3072 )
 position = Vector2( 640, 2752 )
 
 [node name="Set 6" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Pressure_Plate" parent="Door_Sets/Set 6" instance=ExtResource( 67 )]
 position = Vector2( 2688, 2560 )
@@ -441,7 +441,6 @@ position = Vector2( 2560, 2944 )
 position = Vector2( 2560, 3008 )
 
 [node name="Set 7" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 7" instance=ExtResource( 66 )]
 position = Vector2( 2752, 4224 )
@@ -453,7 +452,6 @@ position = Vector2( 2560, 4096 )
 position = Vector2( 2880, 4160 )
 
 [node name="Set 8" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Pressure_Plate" parent="Door_Sets/Set 8" instance=ExtResource( 67 )]
 position = Vector2( 2880, 4288 )
@@ -465,7 +463,6 @@ position = Vector2( 2560, 4352 )
 position = Vector2( 2816, 4224 )
 
 [node name="Set 9" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Pressure_Plate" parent="Door_Sets/Set 9" instance=ExtResource( 67 )]
 position = Vector2( 5056, 4672 )
@@ -477,7 +474,6 @@ position = Vector2( 4992, 4992 )
 position = Vector2( 4928, 4928 )
 
 [node name="Set 10" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 10" instance=ExtResource( 66 )]
 position = Vector2( 4928, 4864 )
@@ -489,7 +485,6 @@ position = Vector2( 4864, 4992 )
 position = Vector2( 4800, 4672 )
 
 [node name="Set 11" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Pressure_Plate" parent="Door_Sets/Set 11" instance=ExtResource( 67 )]
 position = Vector2( 3712, 5888 )
@@ -501,7 +496,6 @@ position = Vector2( 3264, 5760 )
 position = Vector2( 3648, 5888 )
 
 [node name="Set 12" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 12" instance=ExtResource( 66 )]
 position = Vector2( 3072, 5504 )
@@ -513,7 +507,6 @@ position = Vector2( 3072, 5440 )
 position = Vector2( 2944, 5888 )
 
 [node name="Set 13" parent="Door_Sets" instance=ExtResource( 65 )]
-editor/display_folded = true
 
 [node name="Wall" parent="Door_Sets/Set 13" instance=ExtResource( 66 )]
 position = Vector2( 1216, 4288 )

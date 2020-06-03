@@ -65,7 +65,7 @@ func launch_projectile():
 	else:
 		var spawned_projectile = expected_projectile.instance();
 		spawned_projectile.init(get_parent().position, get_parent().rotation, projectile_shoot_speed, projectile_shoot_range, projectile_lead_distance);
-		spawned_projectile.spawning_entity = get_parent()
+		spawned_projectile.spawning_entity = get_parent();
 		Projectile_Carrier.add_child(spawned_projectile);
 		
 

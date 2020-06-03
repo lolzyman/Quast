@@ -7,7 +7,7 @@ func _ready():
 
 func get_item_info() -> Dictionary:
 	return {
-		"Melee_Damage_Value": 10,
+		"Melee_Damage_Value": 50,
 		"Melee_Damage_Type": "slashing",
 		"Attack_Sprite": attack_sprite,
 		"Attack_Collider": attack_collider

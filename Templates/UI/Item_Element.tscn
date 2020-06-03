@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Templates/UI/Item_Element.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="UI_Item_Element" type="TextureRect"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 0.062
+anchor_bottom = 0.107
+margin_right = 0.512001
+margin_bottom = -0.199997
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Overlap Detector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Overlap Detector"]
+position = Vector2( 32, 32 )
+shape = SubResource( 1 )
+
+[node name="Quantity_Label" type="Label" parent="."]
+visible = false
+margin_right = 61.0
+margin_bottom = 63.0
+grow_horizontal = 0
+grow_vertical = 0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "1"
+align = 2
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

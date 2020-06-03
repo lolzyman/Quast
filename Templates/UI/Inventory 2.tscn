@@ -1,0 +1,205 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Templates/UI/Inventory_Overlay.gd" type="Script" id=2]
+[ext_resource path="res://Templates/UI/Item_Element.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scripts/GameEntities/Items/Inventory Items 2.0/SwordC.tscn" type="PackedScene" id=4]
+
+[node name="Inventory Overlay" type="CenterContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+inventory_slot = ExtResource( 3 )
+dummyDictionary = {
+0: {
+"Item": ExtResource( 4 ),
+"Max_Quantity": 2,
+"Quantity": 2
+},
+1: {
+"Item": ExtResource( 4 ),
+"Max_Quantity": 1,
+"Quantity": 1
+}
+}
+
+[node name="Window Spacer" type="HBoxContainer" parent="."]
+margin_left = 232.0
+margin_top = 112.0
+margin_right = 792.0
+margin_bottom = 488.0
+custom_constants/separation = 128
+
+[node name="CenterContainer" type="CenterContainer" parent="Window Spacer"]
+margin_bottom = 376.0
+
+[node name="Inventory" type="ScrollContainer" parent="Window Spacer/CenterContainer"]
+margin_top = 188.0
+margin_bottom = 188.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+follow_focus = true
+scroll_horizontal_enabled = false
+scroll_vertical_enabled = false
+
+[node name="Grid Spacing" type="GridContainer" parent="Window Spacer/CenterContainer/Inventory"]
+size_flags_vertical = 3
+columns = 5
+
+[node name="Armor Equipment" type="VBoxContainer" parent="Window Spacer"]
+margin_left = 128.0
+margin_right = 368.0
+margin_bottom = 376.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="CenterContainer3" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
+margin_right = 240.0
+margin_bottom = 64.0
+
+[node name="Head Layer" type="HBoxContainer" parent="Window Spacer/Armor Equipment/CenterContainer3"]
+margin_left = 88.0
+margin_right = 152.0
+margin_bottom = 64.0
+
+[node name="Head Slot" parent="Window Spacer/Armor Equipment/CenterContainer3/Head Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+my_function = 1
+
+[node name="CenterContainer2" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
+margin_top = 104.0
+margin_right = 240.0
+margin_bottom = 168.0
+
+[node name="Torso and Hands Layer" type="HBoxContainer" parent="Window Spacer/Armor Equipment/CenterContainer2"]
+margin_right = 240.0
+margin_bottom = 64.0
+grow_horizontal = 2
+custom_constants/separation = 24
+
+[node name="Left Hand Slot" parent="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+my_equipment_function = 1
+
+[node name="Torso Slot" parent="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 88.0
+margin_right = 152.0
+margin_bottom = 64.0
+my_equipment_function = 3
+
+[node name="Right Hand Slot" parent="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 176.0
+margin_right = 240.0
+margin_bottom = 64.0
+my_equipment_function = 2
+
+[node name="Chest Layer Centering" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
+margin_top = 208.0
+margin_right = 240.0
+margin_bottom = 272.0
+
+[node name="Chest Layer" type="HBoxContainer" parent="Window Spacer/Armor Equipment/Chest Layer Centering"]
+margin_left = 88.0
+margin_right = 152.0
+margin_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Legs Slot" parent="Window Spacer/Armor Equipment/Chest Layer Centering/Chest Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+my_equipment_function = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
+margin_top = 312.0
+margin_right = 240.0
+margin_bottom = 376.0
+
+[node name="Feet Layer" type="HBoxContainer" parent="Window Spacer/Armor Equipment/CenterContainer"]
+margin_left = 88.0
+margin_right = 152.0
+margin_bottom = 64.0
+
+[node name="Feet Slot" parent="Window Spacer/Armor Equipment/CenterContainer/Feet Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+my_equipment_function = 5
+
+[node name="Item Equipment" type="VBoxContainer" parent="Window Spacer"]
+margin_left = 496.0
+margin_right = 560.0
+margin_bottom = 376.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 40
+
+[node name="Head Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="UI_Item_Element" parent="Window Spacer/Item Equipment/Head Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="Chest Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
+margin_top = 104.0
+margin_right = 64.0
+margin_bottom = 168.0
+
+[node name="UI_Item_Element" parent="Window Spacer/Item Equipment/Chest Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="Legs and Hands Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
+margin_top = 208.0
+margin_right = 64.0
+margin_bottom = 272.0
+custom_constants/separation = 24
+
+[node name="UI_Item_Element" parent="Window Spacer/Item Equipment/Legs and Hands Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="Feet Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
+margin_top = 312.0
+margin_right = 64.0
+margin_bottom = 376.0
+
+[node name="UI_Item_Element" parent="Window Spacer/Item Equipment/Feet Layer" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+[connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer3/Head Layer/Head Slot" to="." method="inventory_movement_handler"]
+[connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer/Left Hand Slot" to="." method="inventory_movement_handler"]
+[connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer/Torso Slot" to="." method="inventory_movement_handler"]
+[connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer/Right Hand Slot" to="." method="inventory_movement_handler"]
+[connection signal="item_change" from="Window Spacer/Armor Equipment/Chest Layer Centering/Chest Layer/Legs Slot" to="." method="inventory_movement_handler"]
+[connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer/Feet Layer/Feet Slot" to="." method="inventory_movement_handler"]

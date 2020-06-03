@@ -1,4 +1,4 @@
-extends "res://Scripts/GameEntities/Enemies/EnemyController.gd"
+extends Base_Enemy
 
 # Variables that are accessible
 # targetPlayer

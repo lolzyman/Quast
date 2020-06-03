@@ -26,6 +26,13 @@ func _ready():
 			print("Hello I am a client trying to connect")
 			#print("I need to add myself")
 			#add_player(get_tree().get_network_connected_peers())
+func _process(delta):
+	if(Input.is_action_just_pressed("game_pause")):
+		if(get_tree().paused == true):
+			get_tree().paused = false;
+		else:
+			get_tree().paused = true;
+			
 
 func _Instantiate_admin_camera():
 	var new_camera = admin_camera.instance()

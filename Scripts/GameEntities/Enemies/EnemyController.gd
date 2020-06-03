@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+class_name Base_Enemy
+
 export var Speed := 50
 export (NodePath) var Projectile_Carrier_Path
 export (Array, Dictionary) var expected_loot_drop
@@ -24,7 +26,11 @@ func _ready():
 	add_to_group("Game_Entity");
 	add_to_group("Enemy");
 	Projectile_Carrier = get_node(Projectile_Carrier_Path);
-	health = max_health
+	var copied_loot_drop = [];
+	for dict in expected_loot_drop:
+		copied_loot_drop.push_back(dict.duplicate())
+	expected_loot_drop = copied_loot_drop;
+	health = max_health;
 func _physics_process(delta):
 	#Gather All Visible Players
 	all_inrange_players = get_inrange_players();
@@ -130,6 +136,7 @@ func process_loot() -> Array:
 		while max_quantity > 0:
 			max_quantity -= 1;
 			var rand_number = rand_range(0, 99);
+			print(rand_number);
 			if rand_number < threshold:
 				quantity += 1;
 		new_dictionary["Item_Type"] = spawn_loot["Item"];

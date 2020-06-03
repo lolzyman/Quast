@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tiled.png-dbbabe58e4f927769540a522a2073689.stex"
+path="res://.import/imageSource.png-22ebf95caa6a96592c01aa8b4219f3ba.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/vnen.tiled_importer/tiled.png"
-dest_files=[ "res://.import/tiled.png-dbbabe58e4f927769540a522a2073689.stex" ]
+source_file="res://Tiled Files/Starter Map/imageSource.png"
+dest_files=[ "res://.import/imageSource.png-22ebf95caa6a96592c01aa8b4219f3ba.stex" ]
 
 [params]
 

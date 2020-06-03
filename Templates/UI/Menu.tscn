@@ -1,13 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/MISC Controllers/Node2D.gd" type="Script" id=1]
 [ext_resource path="res://Templates/Levels/Starter_Level.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Templates/Playgrounds/Playground_Enemy_Movement.tscn" type="PackedScene" id=3]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource( 1 )
 starterLevel = ExtResource( 2 )
-debugLevel = ExtResource( 3 )
 
 [node name="HostGame" type="Button" parent="."]
 margin_left = 216.0
@@ -26,11 +24,14 @@ rect_pivot_offset = Vector2( 168, 88 )
 text = "Join Game"
 
 [node name="PrivateGame" type="Button" parent="."]
-margin_left = 216.0
-margin_top = 160.0
-margin_right = 392.0
-margin_bottom = 180.0
+margin_left = 218.105
+margin_top = 162.105
+margin_right = 394.105
+margin_bottom = 182.105
 text = "Private Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Debug Level" type="Button" parent="."]
 margin_left = 216.0
