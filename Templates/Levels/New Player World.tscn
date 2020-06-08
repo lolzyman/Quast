@@ -61,9 +61,9 @@
 [ext_resource path="res://Templates/Attack_Monitors/Melee Attacks/Attack_Sprites/Generic_Punch.tscn" type="PackedScene" id=59]
 [ext_resource path="res://Templates/Attack_Monitors/Melee Attacks/Attack_Collider/Punch.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Templates/GameEntities/Enemies/Slime.tscn" type="PackedScene" id=61]
-[ext_resource path="res://Templates/GameEntities/Items/Slime_Ball.tscn" type="PackedScene" id=62]
+[ext_resource path="res://Templates/GameEntities/Items 2.0/Slime Ball.tscn" type="PackedScene" id=62]
 [ext_resource path="res://Templates/GameEntities/Enemies/Skeleton_Ranged.tscn" type="PackedScene" id=63]
-[ext_resource path="res://Templates/GameEntities/Items/Sword.tscn" type="PackedScene" id=64]
+[ext_resource path="res://Templates/GameEntities/Items 2.0/SwordC.tscn" type="PackedScene" id=64]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Triggerable_Manager.tscn" type="PackedScene" id=65]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/False_Wall.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Pressure_Plate.tscn" type="PackedScene" id=67]
@@ -366,7 +366,7 @@ pause_mode = 1
 position = Vector2( 2624, -75.3707 )
 expected_loot_drop = [ {
 "Item": ExtResource( 62 ),
-"Probability": 50.0,
+"Probability": 80.0,
 "Quantity": 4,
 "Stackable": false
 } ]

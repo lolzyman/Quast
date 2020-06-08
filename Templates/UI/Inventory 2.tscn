@@ -2,7 +2,8 @@
 
 [ext_resource path="res://Templates/UI/Inventory_Overlay.gd" type="Script" id=2]
 [ext_resource path="res://Templates/UI/Item_Element.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Templates/GameEntities/Items/SwordC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Templates/GameEntities/Items 2.0/SwordC.tscn" type="PackedScene" id=4]
+
 
 [node name="Inventory Overlay" type="CenterContainer"]
 anchor_right = 1.0

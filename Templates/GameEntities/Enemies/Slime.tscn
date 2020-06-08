@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/GameEntities/Enemies/Slime_Controller.gd" type="Script" id=1]
-[ext_resource path="res://Templates/GameEntities/Items/Sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Templates/GameEntities/Items 2.0/Slime Ball.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Images/Created Sprites/Slime/SlimeSprite.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://Templates/UI/Health_Bar.tscn" type="PackedScene" id=4]
 
@@ -19,8 +19,8 @@ __meta__ = {
 }
 expected_loot_drop = [ {
 "Item": ExtResource( 2 ),
-"Probability": 100.0,
-"Quantity": 1,
+"Probability": 80.0,
+"Quantity": 4,
 "Stackable": false
 } ]
 max_health = 10.0

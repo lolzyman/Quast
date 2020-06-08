@@ -68,7 +68,8 @@
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/False_Wall.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Pressure_Plate.tscn" type="PackedScene" id=67]
 [ext_resource path="res://Templates/UI/Inventory 2.tscn" type="PackedScene" id=68]
-[ext_resource path="res://Templates/GameEntities/Items/SwordC.tscn" type="PackedScene" id=69]
+[ext_resource path="res://Templates/GameEntities/Items 2.0/SwordC.tscn" type="PackedScene" id=69]
+
 
 
 [node name="World" type="Node"]
