@@ -39,6 +39,9 @@ margin_top = 224.0
 margin_right = 392.0
 margin_bottom = 244.0
 text = "Launch Debug Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="HostGame" to="." method="_on_HostGame_pressed"]
 [connection signal="pressed" from="JoinGame" to="." method="_on_JoinGame_pressed"]
 [connection signal="pressed" from="PrivateGame" to="." method="_on_Private_Game_pressed"]

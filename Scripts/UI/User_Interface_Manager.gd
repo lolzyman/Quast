@@ -72,6 +72,7 @@ func remove_from_ui(item_information:Dictionary):
 		UI_Item_Placeholder.occupied = false;
 		UI_Item_Placeholder.owned_item = null;
 func place_item(item):
+	return
 	var item_node = get_node(item["UI_Item_Nodepath"]);
 	for placeholder in $CanvasLayer/Inventory_Placeholders.get_children():
 		if !placeholder.occupied:
@@ -89,6 +90,7 @@ func update_inventory_from_ui():
 		item["UI_Placeholder_Nodepath"] = item_node.current_placeholder.get_path();
 	pass
 func update_from_inventory():
+	return
 	for item_key in character_inventory.keys():
 		var item = character_inventory[item_key];
 		if item["UI_Item_Nodepath"] == null:

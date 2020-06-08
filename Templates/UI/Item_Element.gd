@@ -4,8 +4,9 @@ enum function_type {inventory_slot, equipment_slot}
 enum equipment_slot_type {head, left_hand, right_hand, torso, legs, feet}
 export (function_type) var my_function = function_type.inventory_slot;
 export (equipment_slot_type) var my_equipment_function;
+export (NodePath) var new_parent;
 var following_mouse = false;
-var mirror_me;
+var mirror_me : TextureRect;
 var quantity = 1 setget set_quantity;
 var occupied = false;
 var image_Sprite : Node = Sprite.new();
@@ -17,9 +18,13 @@ signal item_change(moving_item_slot, stationary_item_slot)
 func _ready():
 	add_to_group("Item_Element");
 	add_child_below_node($"Overlap Detector",image_Sprite);
+	if new_parent is NodePath:
+		print(new_parent)
+		new_parent = get_node(new_parent);
+	set_process(false)
 
-#func _process(_delta):
-#	pass
+func _process(_delta):
+	mirror_me.rect_position = get_global_mouse_position() - rect_size/2;
 
 func set_quantity(new_quantity):
 	quantity = new_quantity;
@@ -32,17 +37,12 @@ func set_quantity(new_quantity):
 		print("Error in Item_Element, set_quantity, unexpected condition");
 
 func _gui_input(event):
-	if event is InputEventMouseMotion:
-		if following_mouse:
-			mirror_me.rect_position = get_global_mouse_position() - rect_size/2;
 	if event is InputEventMouseButton:
 		if event.pressed == true:
 			mirror_me = duplicate();
 			mirror_me.texture = null;
-			var new_parent = get_tree().get_root()
-			new_parent.add_child(mirror_me);
-			following_mouse = true;
-			mirror_me.rect_position = get_global_mouse_position() - rect_size/2;
+			new_parent.add_child_below_node(new_parent.get_child(0), mirror_me);
+			set_process(true);
 		else:
 			following_mouse = false;
 			var colliding_areas = mirror_me.get_child(0).get_overlapping_areas();
@@ -50,6 +50,7 @@ func _gui_input(event):
 			if !colliding_areas.empty():
 				emit_signal("item_change", self, colliding_areas[0].get_parent());
 			mirror_me.get_parent().remove_child(mirror_me);
+			set_process(false);
 
 func update_item(item : Dictionary):
 	if item.empty():
@@ -65,7 +66,6 @@ func clear():
 	my_item_dictionary = {};
 	$Quantity_Label.visible = false;
 	image_Sprite.texture = null;
-	pass
 
 func is_empty() -> bool:
 	if my_item_dictionary.empty():

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Templates/UI/Inventory_Overlay.gd" type="Script" id=2]
 [ext_resource path="res://Templates/UI/Item_Element.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scripts/GameEntities/Items/Inventory Items 2.0/SwordC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Templates/GameEntities/Items/SwordC.tscn" type="PackedScene" id=4]
 
 [node name="Inventory Overlay" type="CenterContainer"]
 anchor_right = 1.0
@@ -15,11 +15,13 @@ inventory_slot = ExtResource( 3 )
 dummyDictionary = {
 0: {
 "Item": ExtResource( 4 ),
+"Key": 0,
 "Max_Quantity": 2,
 "Quantity": 2
 },
 1: {
 "Item": ExtResource( 4 ),
+"Key": 1,
 "Max_Quantity": 1,
 "Quantity": 1
 }
@@ -73,6 +75,7 @@ anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
 my_function = 1
+new_parent = NodePath("../../../../..")
 
 [node name="CenterContainer2" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
 margin_top = 104.0
@@ -91,6 +94,7 @@ anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
 my_equipment_function = 1
+new_parent = NodePath("../../../../..")
 
 [node name="Torso Slot" parent="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -99,6 +103,7 @@ margin_left = 88.0
 margin_right = 152.0
 margin_bottom = 64.0
 my_equipment_function = 3
+new_parent = NodePath("../../../../..")
 
 [node name="Right Hand Slot" parent="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer" instance=ExtResource( 3 )]
 anchor_right = 0.0
@@ -107,6 +112,7 @@ margin_left = 176.0
 margin_right = 240.0
 margin_bottom = 64.0
 my_equipment_function = 2
+new_parent = NodePath("../../../../..")
 
 [node name="Chest Layer Centering" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
 margin_top = 208.0
@@ -126,6 +132,7 @@ anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
 my_equipment_function = 4
+new_parent = NodePath("../../../../..")
 
 [node name="CenterContainer" type="CenterContainer" parent="Window Spacer/Armor Equipment"]
 margin_top = 312.0
@@ -143,6 +150,7 @@ anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
 my_equipment_function = 5
+new_parent = NodePath("../../../../..")
 
 [node name="Item Equipment" type="VBoxContainer" parent="Window Spacer"]
 margin_left = 496.0
@@ -163,6 +171,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
+new_parent = NodePath("../../../..")
 
 [node name="Chest Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
 margin_top = 104.0
@@ -174,6 +183,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
+new_parent = NodePath("../../../..")
 
 [node name="Legs and Hands Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
 margin_top = 208.0
@@ -186,6 +196,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
+new_parent = NodePath("../../../..")
 
 [node name="Feet Layer" type="HBoxContainer" parent="Window Spacer/Item Equipment"]
 margin_top = 312.0
@@ -197,6 +208,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 64.0
 margin_bottom = 64.0
+new_parent = NodePath("../../../..")
 [connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer3/Head Layer/Head Slot" to="." method="inventory_movement_handler"]
 [connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer/Left Hand Slot" to="." method="inventory_movement_handler"]
 [connection signal="item_change" from="Window Spacer/Armor Equipment/CenterContainer2/Torso and Hands Layer/Torso Slot" to="." method="inventory_movement_handler"]

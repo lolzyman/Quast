@@ -68,8 +68,7 @@
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/False_Wall.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Pressure_Plate.tscn" type="PackedScene" id=67]
 [ext_resource path="res://Templates/UI/Inventory 2.tscn" type="PackedScene" id=68]
-[ext_resource path="res://Templates/GameEntities/Items/SwordC.tscn" type="PackedScene" id=69]
-
+[ext_resource path="res://Player Camera.tscn" type="PackedScene" id=70]
 
 [node name="World" type="Node"]
 pause_mode = 2
@@ -81,6 +80,10 @@ user_interface = ExtResource( 4 )
 character_inventory_interface = ExtResource( 68 )
 loot_bag = ExtResource( 5 )
 current_player = NodePath("Players/Main Player")
+
+[node name="Node2D" parent="." instance=ExtResource( 70 )]
+current = true
+target_player_path = NodePath("../Players/Main Player")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 pause_mode = 1
@@ -353,22 +356,8 @@ Projectile_Carrier_Path = NodePath("../../Projectiles")
 default_attack_sprite = ExtResource( 59 )
 default_attack_collider = ExtResource( 60 )
 
-[node name="Inventory Overlay" parent="Players/Main Player" instance=ExtResource( 68 )]
-anchor_bottom = 0.0
-margin_right = 560.0
-margin_bottom = 376.0
-dummyDictionary = {
-0: {
-"Item": ExtResource( 69 ),
-"Max_Quantity": 2,
-"Quantity": 2
-},
-1: {
-"Item": ExtResource( 69 ),
-"Max_Quantity": 1,
-"Quantity": 1
-}
-}
+[node name="Camera2D" parent="Players/Main Player" index="1"]
+current = false
 
 [node name="Enemies" type="Node2D" parent="."]
 pause_mode = 1
@@ -543,3 +532,5 @@ position = Vector2( 1152, 4224 )
 
 [node name="Pressure_Plate2" parent="Door_Sets/Set 13" instance=ExtResource( 67 )]
 position = Vector2( 1600, 4224 )
+
+[editable path="Players/Main Player"]
