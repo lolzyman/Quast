@@ -89,6 +89,21 @@ func unequip(item:Node2D):
 			equipment_change_flag = true;
 			return
 
+func right_hand_equipment_handler(new_item, old_item):
+	print("Right Hand Equipment Handler Function")
+	print(new_item, old_item);
+	if new_item.empty():
+		return
+	var new_item_information = new_item["Item"];
+	print(new_item_information)
+	var item_info = new_item_information.instance().get_item_info();
+	if item_info.has_all(["Melee_Damage_Value", "Melee_Damage_Type","Attack_Sprite","Attack_Collider"]):
+		$Melee_Monitor.ready_weapon(item_info)
+	pass
+	var x = 10;
+	x += 12;
+	pass
+
 func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = SPEED;

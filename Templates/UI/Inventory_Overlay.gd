@@ -20,7 +20,7 @@ class_name Inventory_User_Interface
 
 signal head_equipment_changed(new_item, old_item);
 signal torso_equipment_changed(new_item, old_item);
-signal left_hand_quipment_changed(new_item, old_item);
+signal left_hand_equipment_changed(new_item, old_item);
 signal right_hand_equipment_changed(new_item, old_item);
 signal leg_equipment_changed(new_item, old_item);
 signal feet_equipment_changed(new_item, old_item);
@@ -31,9 +31,7 @@ var monitoring_dictionary = {}
 var my_source_dictionary;
 func _ready():
 	add_grid_spaces(20);
-	prep_from_dictionary(dummyDictionary);
 	connect("head_equipment_changed", self ,"dummy_emitter")
-	my_source_dictionary = dummyDictionary;
 
 func add_grid_spaces(space_count : int):
 	for index in range(space_count):
@@ -43,7 +41,6 @@ func add_grid_spaces(space_count : int):
 		new_inventory_slot.new_parent = self;
 
 func update_inventory():
-	print("I got called")
 	prep_from_dictionary(my_source_dictionary);
 
 func inventory_movement_handler(moving_item_slot:Item_Element_Class, stationary_item_slot:Item_Element_Class):
@@ -68,6 +65,7 @@ func inventory_movement_handler(moving_item_slot:Item_Element_Class, stationary_
 	
 
 func prep_from_dictionary(source_dictionary : Dictionary):
+	my_source_dictionary = source_dictionary;
 	for item_key in source_dictionary:
 		var item = source_dictionary[item_key];
 		print("prep_from_dictionary starting", item);
@@ -98,7 +96,7 @@ func handle_equipment_movement(equipment_slot_id, new_item, old_item):
 			Item_Element_Class.equipment_slot_type.torso:
 				emit_signal("torso_equipment_changed", new_item, old_item)
 			Item_Element_Class.equipment_slot_type.legs:
-				emit_signal("legs_equipment_changed", new_item, old_item)
+				emit_signal("leg_equipment_changed", new_item, old_item)
 			Item_Element_Class.equipment_slot_type.feet:
 				emit_signal("feet_equipment_changed", new_item, old_item)
 

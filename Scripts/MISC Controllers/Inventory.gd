@@ -10,11 +10,7 @@ var temp_target:Inventory_User_Interface
 signal inventory_update;
 
 func _ready():
-	print("Error Value: ", connect("inventory_update", self, "temp_function"));
-
-func temp_function():
-	print("Hello I am a temp!");
-	temp_target.prep_from_dictionary(inventory);
+	pass
 
 func remove_item_by_value(item_dictionary:Dictionary):
 	if !item_dictionary.has_all(["Item", "Quantity", "Max_Quantity"]):

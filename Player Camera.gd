@@ -12,10 +12,15 @@ func _ready():
 	if target_player_path != null:
 		target_player = get_node(target_player_path);
 		target_player.managed_inventory.temp_target = $"CanvasLayer/Inventory Overlay";
-		$"CanvasLayer/Inventory Overlay".prep_from_dictionary(target_player.managed_inventory.inventory);
-		print("Error value: ", target_player.managed_inventory.connect("inventory_update", $"CanvasLayer/Inventory Overlay", "update_inventory"))
+		
+		$"CanvasLayer/Inventory Overlay".my_source_dictionary = target_player.managed_inventory.inventory;
+		assign_signals();
+		
 	pass # Replace with function body.
 
+func assign_signals():
+	print("Inventory Change Error value: ", target_player.managed_inventory.connect("inventory_update", $"CanvasLayer/Inventory Overlay", "update_inventory"))
+	print("Head Equipment Change Error value: ", $"CanvasLayer/Inventory Overlay".connect("right_hand_equipment_changed", target_player, "right_hand_equipment_handler"));
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
