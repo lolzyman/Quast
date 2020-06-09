@@ -46,22 +46,28 @@ func update_inventory():
 func inventory_movement_handler(moving_item_slot:Item_Element_Class, stationary_item_slot:Item_Element_Class):
 	var moving_has_item = !moving_item_slot.is_empty();
 	var stationary_has_item = !stationary_item_slot.is_empty();
-	var moving_item_slot_key = moving_item_slot.my_item_dictionary;
-	var stationary_item_slot_key = stationary_item_slot.my_item_dictionary;
+	var moving_item_slot_key;
+	var stationary_item_slot_key;
+	var moving_item_dictionary;
+	var stationary_item_dictionary;
 	if moving_has_item:
+		moving_item_slot_key = moving_item_slot.my_item_dictionary["Key"];
+		moving_item_dictionary = moving_item_slot.my_item_dictionary;
 		if stationary_has_item:
-			moving_item_slot.update_item(stationary_item_slot_key);
-			stationary_item_slot.update_item(moving_item_slot_key);
+			stationary_item_slot_key = stationary_item_slot.my_item_dictionary["Key"];
+			stationary_item_dictionary = stationary_item_slot.my_item_dictionary;
+			moving_item_slot.update_item(stationary_item_dictionary);
+			stationary_item_slot.update_item(moving_item_dictionary);
 			monitoring_dictionary[moving_item_slot_key] = stationary_item_slot;
 			monitoring_dictionary[stationary_item_slot_key] = moving_item_slot
 		else:
 			moving_item_slot.clear();
-			stationary_item_slot.update_item(moving_item_slot_key);
+			stationary_item_slot.update_item(moving_item_dictionary);
 			monitoring_dictionary[moving_item_slot_key] = stationary_item_slot;
-	if stationary_item_slot.my_function == Item_Element_Class.function_type.equipment_slot:
-		handle_equipment_movement(stationary_item_slot.my_equipment_function, moving_item_slot_key, stationary_item_slot_key);
-	if moving_item_slot.my_function == Item_Element_Class.function_type.equipment_slot:
-		handle_equipment_movement(moving_item_slot.my_equipment_function, stationary_item_slot_key, moving_item_slot_key);
+		if stationary_item_slot.my_function == Item_Element_Class.function_type.equipment_slot:
+			handle_equipment_movement(stationary_item_slot.my_equipment_function, moving_item_dictionary, stationary_item_dictionary);
+		if moving_item_slot.my_function == Item_Element_Class.function_type.equipment_slot:
+			handle_equipment_movement(moving_item_slot.my_equipment_function, stationary_item_dictionary, moving_item_dictionary);
 	
 
 func prep_from_dictionary(source_dictionary : Dictionary):
