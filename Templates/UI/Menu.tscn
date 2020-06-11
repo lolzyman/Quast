@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/MISC Controllers/Node2D.gd" type="Script" id=1]
-[ext_resource path="res://Templates/Levels/Starter_Level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/MISC Controllers/Start Menu.gd" type="Script" id=1]
+[ext_resource path="res://Templates/Levels/New Player World.tscn" type="PackedScene" id=2]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource( 1 )

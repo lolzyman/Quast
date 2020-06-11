@@ -1,26 +1,28 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Templates/UI/Inventory_Overlay.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/UI/Inventory_UI.gd" type="Script" id=1]
+[ext_resource path="res://Templates/GameEntities/Items 2.0/SwordC.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Templates/UI/Item_Element.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Templates/GameEntities/Items 2.0/SwordC.tscn" type="PackedScene" id=4]
+
+
 
 [node name="Inventory Overlay" type="CenterContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 inventory_slot = ExtResource( 3 )
 dummyDictionary = {
 0: {
-"Item": ExtResource( 4 ),
+"Item": ExtResource( 2 ),
 "Key": 0,
 "Max_Quantity": 2,
 "Quantity": 2
 },
 1: {
-"Item": ExtResource( 4 ),
+"Item": ExtResource( 2 ),
 "Key": 1,
 "Max_Quantity": 1,
 "Quantity": 1

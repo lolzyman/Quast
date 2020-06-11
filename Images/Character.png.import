@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Attack_Arch.png-9a0fbfc7637cf48ad76abe6e0a2990bc.stex"
+path="res://.import/Character.png-c22bc08511f7a672e0d934f35f8fae7a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Beta_Images/Attack_Arch/Attack_Arch.png"
-dest_files=[ "res://.import/Attack_Arch.png-9a0fbfc7637cf48ad76abe6e0a2990bc.stex" ]
+source_file="res://Images/Character.png"
+dest_files=[ "res://.import/Character.png-c22bc08511f7a672e0d934f35f8fae7a.stex" ]
 
 [params]
 

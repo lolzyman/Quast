@@ -1,17 +1,17 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Templates/UI/Inventory 2.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/MISC Controllers/Player Camera.gd" type="Script" id=1]
 [ext_resource path="res://Templates/GameEntities/Items 2.0/SwordC.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Player Camera.gd" type="Script" id=3]
+[ext_resource path="res://Templates/UI/Inventory_UI.tscn" type="PackedScene" id=3]
 
-[node name="Node2D" type="Camera2D"]
-script = ExtResource( 3 )
+[node name="Player View" type="Camera2D"]
+script = ExtResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 offset = Vector2( 0.5, 0 )
 transform = Transform2D( 1, 0, 0, 1, 0.5, 0 )
 
-[node name="Inventory Overlay" parent="CanvasLayer" instance=ExtResource( 1 )]
+[node name="Inventory Overlay" parent="CanvasLayer" instance=ExtResource( 3 )]
 dummyDictionary = {
 0: {
 "Item": ExtResource( 2 ),

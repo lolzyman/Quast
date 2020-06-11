@@ -2,15 +2,14 @@ extends Node
 
 class_name Managed_Inventory
 
+#Sub class to handle Inventory Mangement.
+
 var inventory:Dictionary = {};
 var max_size = 10;
 var next_index = 0;
 var free_indecies = [];
 var temp_target:Inventory_User_Interface
 signal inventory_update;
-
-func _ready():
-	pass
 
 func remove_item_by_value(item_dictionary:Dictionary):
 	if !item_dictionary.has_all(["Item", "Quantity", "Max_Quantity"]):

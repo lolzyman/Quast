@@ -1,9 +1,8 @@
-[gd_scene load_steps=70 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://Scripts/MISC Controllers/World_Controller.gd" type="Script" id=1]
 [ext_resource path="res://Templates/GameEntities/admin_camera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Templates/GameEntities/Characters/Dummy Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Templates/UI/User_Interface.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Templates/GameEntities/Generic_Item_Bag.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Rooms/Class_1/S/2-Box.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Rooms/Class_2/Bend/NE/2-2-Pinched_Ball.tscn" type="PackedScene" id=7]
@@ -58,8 +57,8 @@
 [ext_resource path="res://Rooms/Class_3/XE/2-2-2-Wide_Plain.tscn" type="PackedScene" id=56]
 [ext_resource path="res://Rooms/Class_1/N/13-Liche_Boss.tscn" type="PackedScene" id=57]
 [ext_resource path="res://Rooms/Class_2/Bend/SE/13-2-Litch_Boss_Entry.tscn" type="PackedScene" id=58]
-[ext_resource path="res://Templates/Attack_Monitors/Melee Attacks/Attack_Sprites/Generic_Punch.tscn" type="PackedScene" id=59]
-[ext_resource path="res://Templates/Attack_Monitors/Melee Attacks/Attack_Collider/Punch.tscn" type="PackedScene" id=60]
+[ext_resource path="res://Templates/Attack_Handlers/Melee Attacks/Attack_Sprites/Generic_Punch.tscn" type="PackedScene" id=59]
+[ext_resource path="res://Templates/Attack_Handlers/Melee Attacks/Attack_Collider/Punch.tscn" type="PackedScene" id=60]
 [ext_resource path="res://Templates/GameEntities/Enemies/Slime.tscn" type="PackedScene" id=61]
 [ext_resource path="res://Templates/GameEntities/Items 2.0/Slime Ball.tscn" type="PackedScene" id=62]
 [ext_resource path="res://Templates/GameEntities/Enemies/Skeleton_Ranged.tscn" type="PackedScene" id=63]
@@ -67,8 +66,8 @@
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Triggerable_Manager.tscn" type="PackedScene" id=65]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/False_Wall.tscn" type="PackedScene" id=66]
 [ext_resource path="res://Templates/GameEntities/Triggerable Elements/Pressure_Plate.tscn" type="PackedScene" id=67]
-[ext_resource path="res://Templates/UI/Inventory 2.tscn" type="PackedScene" id=68]
-[ext_resource path="res://Player Camera.tscn" type="PackedScene" id=70]
+[ext_resource path="res://Templates/UI/Inventory_UI.tscn" type="PackedScene" id=68]
+[ext_resource path="res://Templates/Player Camera.tscn" type="PackedScene" id=70]
 
 [node name="World" type="Node"]
 pause_mode = 2
@@ -76,7 +75,6 @@ script = ExtResource( 1 )
 admin_camera = ExtResource( 2 )
 default_player = ExtResource( 3 )
 spawn_location = Vector2( 2816, 64 )
-user_interface = ExtResource( 4 )
 character_inventory_interface = ExtResource( 68 )
 loot_bag = ExtResource( 5 )
 current_player = NodePath("Players/Main Player")
