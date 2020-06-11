@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scripts/MISC Controllers/Node2D.gd" type="Script" id=1]
-[ext_resource path="res://Templates/Levels/Starter_Level.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/MISC Controllers/Start Menu.gd" type="Script" id=1]
+[ext_resource path="res://Templates/Levels/New Player World.tscn" type="PackedScene" id=2]
 
 [node name="Main Menu" type="Node2D"]
 script = ExtResource( 1 )
@@ -39,6 +39,9 @@ margin_top = 224.0
 margin_right = 392.0
 margin_bottom = 244.0
 text = "Launch Debug Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="HostGame" to="." method="_on_HostGame_pressed"]
 [connection signal="pressed" from="JoinGame" to="." method="_on_JoinGame_pressed"]
 [connection signal="pressed" from="PrivateGame" to="." method="_on_Private_Game_pressed"]

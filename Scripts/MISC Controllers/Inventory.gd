@@ -2,13 +2,14 @@ extends Node
 
 class_name Managed_Inventory
 
-var inventory:Dictionary;
+#Sub class to handle Inventory Mangement.
+
+var inventory:Dictionary = {};
 var max_size = 10;
 var next_index = 0;
 var free_indecies = [];
-
-func _ready():
-	inventory = {};
+var temp_target:Inventory_User_Interface
+signal inventory_update;
 
 func remove_item_by_value(item_dictionary:Dictionary):
 	if !item_dictionary.has_all(["Item", "Quantity", "Max_Quantity"]):
@@ -34,6 +35,7 @@ func remove_empty_items():
 			remove_item_by_key(key);
 
 func add_item(item_dictionary) -> bool:
+	var add_item_outcome = false;
 	#Dictionary Format Check
 	if !item_dictionary.has_all(["Item", "Quantity", "Max_Quantity"]):
 		print("Item Dictionary isn't formated correctly");
@@ -45,27 +47,40 @@ func add_item(item_dictionary) -> bool:
 			var available_space = inventory[key]["Max_Quantity"] - inventory[key]["Quantity"];
 			if item_dictionary["Quantity"] < available_space:
 				inventory[key]["Quantity"] += item_dictionary["Quantity"];
-				return true;
+				add_item_outcome = true;
+				break;
 			if available_space > 0:
 				inventory[key]["Quantity"] += available_space;
 				item_dictionary["Quantity"] -= available_space;
-				return true;
+				add_item_outcome = true;
+				break;
 	
 	#Place in empty slot
 	if !free_indecies.empty():
 		inventory[free_indecies.pop_back()] = item_dictionary;
-		return true;
+		add_item_outcome = true;
 	if next_index < max_size:
 		inventory[next_index] = item_dictionary;
 		next_index += 1;
+		add_item_outcome = true;
+		
+	if add_item_outcome:
+		generate_keys();
+		emit_signal("inventory_update");
 		return true;
 	return false;
+
+func generate_keys():
+	for key in inventory:
+		var item_dict = inventory[key];
+		item_dict["Key"] = key;
 
 func add_item_array(item_array:Array) -> Array:
 	var rejected_items = [];
 	for item in item_array:
 		if !add_item(item):
 			rejected_items.push_back(item);
+	generate_keys();
 	return rejected_items;
 
 func get_all_items() -> Array:

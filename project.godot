@@ -14,10 +14,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scripts/GameEntities/Enemies/EnemyController.gd"
 }, {
+"base": "CenterContainer",
+"class": "Inventory_User_Interface",
+"language": "GDScript",
+"path": "res://Scripts/UI/Inventory_UI.gd"
+}, {
 "base": "TextureRect",
 "class": "Item_Element_Class",
 "language": "GDScript",
-"path": "res://Templates/UI/Item_Element.gd"
+"path": "res://Scripts/UI/Item_Element.gd"
 }, {
 "base": "Node",
 "class": "Managed_Inventory",
@@ -26,6 +31,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Base_Enemy": "",
+"Inventory_User_Interface": "",
 "Item_Element_Class": "",
 "Managed_Inventory": ""
 }
@@ -38,8 +44,8 @@ config/icon="res://icon.png"
 
 [autoload]
 
-globals="*res://Singletons/globals.gd"
-Game_Constants="*res://Singletons/GameConstants.gd"
+globals="*res://Scripts/Singletons/globals.gd"
+Game_Constants="*res://Scripts/Singletons/GameConstants.gd"
 
 [display]
 

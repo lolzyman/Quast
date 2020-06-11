@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/GameEntities/Items/Inventory Items 2.0/SwordC.gd" type="Script" id=1]
+[ext_resource path="res://Images/Itemset A/SwordC.png" type="Texture" id=2]
+[ext_resource path="res://Templates/Attack_Handlers/Melee Attacks/Attack_Collider/Full_Arc.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Templates/Attack_Handlers/Melee Attacks/Attack_Sprites/Generic_Sword.tscn" type="PackedScene" id=4]
+
+
+[node name="SwordC" type="Sprite"]
+position = Vector2( 32, 32 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+script = ExtResource( 1 )
+attack_sprite = ExtResource( 4 )
+attack_collider = ExtResource( 3 )

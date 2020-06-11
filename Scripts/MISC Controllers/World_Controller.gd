@@ -3,17 +3,13 @@ extends Node
 export (PackedScene) var admin_camera;
 export (PackedScene) var default_player;
 export (Vector2) var spawn_location;
-export (PackedScene) var user_interface;
+export (PackedScene) var character_inventory_interface;
 export (PackedScene) var loot_bag;
 export (NodePath) var current_player;
 func _ready():
 	Game_Constants.reinstate_changes()
 	current_player = get_node(current_player);
-	user_interface = user_interface.instance();
-	add_child(user_interface);
-	user_interface.character = current_player;
-	user_interface.character_inventory = current_player.inventory;
-	user_interface.character_equipment = current_player.equipment;
+	character_inventory_interface = character_inventory_interface.instance();
 	print("World Is Initalizing")
 	if(globals.private_game == false):
 		if(globals.is_server):

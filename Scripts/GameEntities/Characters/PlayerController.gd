@@ -1,4 +1,7 @@
 extends KinematicBody2D
+
+#Variables necessary to the character as an entity
+
 var motion : = Vector2();
 export (PackedScene) var projectile
 export var SPEED = 100;
@@ -31,16 +34,24 @@ signal set_attack;
 signal set_ranged_attack;
 signal examine_items;
 signal health_update(health_percentage)
+signal update_inventory;
 
 var attackCooldownTimer = 0;
 var projectile_shoot_speed = 100;
 var projectile_shoot_range = 500;
 
+#Initializer for the Character
 func _ready():
+	add_child(managed_inventory);
+	#Old implementation for multiplayer servers
 	Game_Constants.connected_players_array.append(self);
+	
+	#Groups necessary for functionality
 	add_to_group("Player");
 	add_to_group("Character");
 	add_to_group("Game_Entity");
+	
+	#Signal Connection for handling ranged attak
 	var _err = connect("set_ranged_attack", $Ranged_Monitor, "attack_call")
 	Projectile_Carrier = get_node(Projectile_Carrier_Path);
 	Enemy_Carrier = get_node(Enemy_Carrier_Path);
@@ -65,7 +76,7 @@ func equip(equip_item:Node2D, equip_placeholder_keyword):
 	equipment[equip_placeholder_keyword] = equip_item.source_dictionary;
 	equipment_change_flag = true;
 	
-func recieve_damage(damage_value, damage_type):
+func recieve_damage(damage_value, _damage_type):
 	#print("I was supposed to take ", damage_value, " ", damage_type, " damage");
 	health -= damage_value;
 	emit_signal("health_update", health * 100 / max_health)
@@ -77,6 +88,21 @@ func unequip(item:Node2D):
 			equipment[key] = null
 			equipment_change_flag = true;
 			return
+
+func right_hand_equipment_handler(new_item, old_item):
+	print("Right Hand Equipment Handler Function")
+	print(new_item, old_item);
+	if new_item.empty():
+		return
+	var new_item_information = new_item["Item"];
+	print(new_item_information)
+	var item_info = new_item_information.instance().get_item_info();
+	if item_info.has_all(["Melee_Damage_Value", "Melee_Damage_Type","Attack_Sprite","Attack_Collider"]):
+		$Melee_Monitor.ready_weapon(item_info)
+	pass
+	var x = 10;
+	x += 12;
+	pass
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("ui_right"):
@@ -93,9 +119,8 @@ func _physics_process(_delta):
 		motion.y = 0;
 	if Input.is_action_just_pressed("game_melee"):
 		emit_signal("set_attack");
-		#attack();
 		
-	var _dummyvar = move_and_slide(motion);
+	var _linear_velocity = move_and_slide(motion);
 	look_at(get_global_mouse_position());
 	if(!globals.private_game):
 		networkSync()
